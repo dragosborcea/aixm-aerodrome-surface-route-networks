@@ -3,6 +3,6 @@ This is an attempt to provide an AIXM extension for the Aerodrome Surface Route 
 
 Please read the user_manual.docx for more information such as:
   1. How I have created the AIXM ASRN extension
-	2. How to use these files
-	3. Explanation of the terms involved in this project
-	4. About this project
+  2. How to use these files
+  3. Explanation of the terms involved in this project
+  4. About this project
