@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message:AIXMBasicMessage xmlns:message="http://www.aixm.aero/schema/5.1/message"
+    xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gmd="http://www.isotc211.org/2005/gmd"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:uuid="java.util.UUID" xmlns:asrn="D:\Work\AMDB\asrn_ext\asrn_Features.xsd"
+    xsi:schemaLocation="http://www.aixm.aero/schema/5.1/message http://www.aixm.aero/schema/5.1/message/AIXM_BasicMessage.xsd D:\Work\AMDB\asrn_ext D:\Work\AMDB\asrn_ext\asrn_Features.xsd"
+    gml:id="M0000001">
+    <gml:boundedBy xsi:nil="true"/>
+
+    <message:hasMember>
+        <asrn:RouteSurfaceNetworkEdge gml:id="uuid.436205dc-6740-11e8-adc0-fa7ae01bbebc">
+            <gml:identifier codeSpace="urn:uuid:">436205dc-6740-11e8-adc0-fa7ae01bbebc</gml:identifier>
+            <gml:boundedBy xsi:nil="true"/>
+            <asrn:timeSlice>
+                <asrn:RouteSurfaceNetworkEdgeTimeSlice gml:id="uuid.97802479-7a50-4171-bea2-df32926b00d7">
+                    <gml:validTime>
+                        <gml:TimePeriod gml:id="uuid.7fb3f6a2-7d22-4371-af76-9edef7a18b56">
+                            <gml:beginPosition>2018-04-01T10:02:34Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </gml:validTime>
+                    <asrn:interpretation>BASELINE</asrn:interpretation>
+                    <asrn:sequenceNumber>1</asrn:sequenceNumber>
+                    <asrn:featureLifetime>
+                        <gml:TimePeriod gml:id="uuid.38120b41-e0e9-42e1-b9e8-27e1fef279dc">
+                            <gml:beginPosition>2018-04-01T10:02:34Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </asrn:featureLifetime>
+                    
+                    <asrn:ASRNEdgeType>RUNWAY</asrn:ASRNEdgeType>
+                    <asrn:correspondingSurfaceFeatureName xsi:nil="true"/>
+                    <asrn:curvature xsi:nil="true"/>
+                    <asrn:directionality>BOTH</asrn:directionality>
+                    <asrn:edgeDerivationMethod>DERIVED</asrn:edgeDerivationMethod>
+                    <asrn:length uom="M">59.5550774281311</asrn:length>
+                    <asrn:nameInNetwork>01.19</asrn:nameInNetwork>
+                    <asrn:extent> 
+                        <aixm:ElevatedCurve srsName="urn:ogc:def:crs:EPSG::4326" gml:id="uuid.e5c32937-1157-464d-8f8a-531faf86cf1e" > 
+                            <gml:segments> 
+                                <gml:GeodesicString> 
+                                    <gml:posList>50.91247501332578 4.50183462292846 50.91197479116244 4.501638247693807 </gml:posList> 
+                                </gml:GeodesicString> 
+                            </gml:segments> 
+                        </aixm:ElevatedCurve> 
+                    </asrn:extent>
+                    <asrn:firstConnectingNode xlink:href="uuid.43620280-6740-11e8-adc0 fa7ae01bbebc"/> 
+                    <asrn:secondConnectingNode xlink:href="uuid.4362015e-6740-11e8-adc0-fa7ae01bbebc"/>
+                    <!-- delete this
+                    <asrn:node1ref xlink:href="uuid.43620280-6740-11e8-adc0 fa7ae01bbebc"/> 
+                    <asrn:node2ref xlink:href="uuid.4362015e-6740-11e8-adc0-fa7ae01bbebc"/>
+                    -->
+                    <asrn:associatedAirportHeliport xlink:href="notDefined"/> 
+                    <asrn:deicingArea xlink:href="notDefined"/> 
+                    <!-- properties related to PCN (value, pavement and subgrade) --> 
+                    <asrn:surfaceProperties> 
+                        <aixm:SurfaceCharacteristics gml:id="uuid.87c4b887-cd03-469d-a8e2-f50f002e212b"> 
+                            <aixm:composition xsi:nil="true"/> 
+                            <aixm:classPCN>120</aixm:classPCN> 
+                            <aixm:pavementTypePCN>FLEXIBLE</aixm:pavementTypePCN> 
+                            <aixm:pavementSubgradePCN>A</aixm:pavementSubgradePCN>
+                        </aixm:SurfaceCharacteristics> 
+                    </asrn:surfaceProperties> 
+                    <!-- properties that denote restricted aircraft based on model and wingspan --> 
+                    <asrn:AircraftCategory> 
+                        <aixm:AircraftCharacteristic gml:id="uuid.87c4b887-cd03-469d-a8e2-testkiki0001"> 
+                            <aixm:typeAircraftICAO xsi:nil="true"/> 
+                            <aixm:wingSpan uom="M">10000</aixm:wingSpan> 
+                            <aixm:wingSpanInterpretation>ABOVE</aixm:wingSpanInterpretation> 
+                        </aixm:AircraftCharacteristic> 
+                    </asrn:AircraftCategory>
+                    <!-- schema not defined yet for these relationships
+                    <asrn:associatedTaxiway xlink:href="notDefined"/> 
+                    <asrn:associatedRunway xlink:href="notDefined"/> 
+                    <asrn:associatedApron xlink:href="notDefined"/> 
+                    <asrn:associatedStand xlink:href="notDefined"/> 
+                    -->
+                </asrn:RouteSurfaceNetworkEdgeTimeSlice> 
+            </asrn:timeSlice> 
+        </asrn:RouteSurfaceNetworkEdge>
+    </message:hasMember>
+
+    <message:hasMember>
+        <asrn:RouteSurfaceNetworkNode gml:id="uuid.43620280-6740-11e8-adc0-fa7ae01bbebc">
+            <gml:identifier codeSpace="urn:uuid:">43620280-6740-11e8-adc0-fa7ae01bbebc</gml:identifier>
+            <gml:boundedBy xsi:nil="true"/>
+            <asrn:timeSlice>
+                <asrn:RouteSurfaceNetworkNodeTimeSlice
+                    gml:id="uuid.a150a7f0-eb64-48dd-b76d-972d81dbcbb7">
+                    <gml:validTime>
+                        <gml:TimePeriod gml:id="uuid.7fb3f660-7d22-4371-af76-9edef7a18b56">
+                            <gml:beginPosition>2018-04-01T10:02:34Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </gml:validTime>
+                    <asrn:interpretation>BASELINE</asrn:interpretation>
+                    <asrn:sequenceNumber>1</asrn:sequenceNumber>
+                    <asrn:featureLifetime>
+                        <gml:TimePeriod gml:id="uuid.38120b3b-e0e9-42e1-b9e8-27e1fef279dc">
+                            <gml:beginPosition>2018-04-01T10:02:34Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </asrn:featureLifetime>
+                    
+                    <asrn:ASRNNodeType>RUNWAY_INTERSECTION</asrn:ASRNNodeType>
+                    <!-- holding point category, added only if type is HOLDING POINT -->
+                    <asrn:landingCategory xsi:nil="true"/>
+                    <asrn:nameInNetwork>01.19</asrn:nameInNetwork>
+                    <asrn:terminalBuilding xsi:nil="true"/>
+                    <asrn:location>
+                        <aixm:ElevatedPoint gml:id="uuid.b3ff5a27-e4e1-46e6-8457-56a2561fb862" srsName="urn:ogc:def:crs:EPSG::4326">
+                            <gml:pos>50.91197117068407 4.501630135045893</gml:pos>
+                            <aixm:elevation uom="FT" xsi:nil="true"/>
+                        </aixm:ElevatedPoint>
+                    </asrn:location>
+                    <!-- links to other associated features encoded in AIXM -->
+                    <asrn:associatedAirportHeliport xlink:href="notDefined"/>
+                    <asrn:deicingArea xlink:href="notDefined"/>
+                    <asrn:treshold xlink:href="notDefined"/>
+                    <asrn:taxiwayIntersectionMarking xlink:href="notDefined"/>
+                    <asrn:landAndHoldShortOperations xlink:href="notDefined"/>
+                    <asrn:taxiwayHoldingPosition xlink:href="notDefined"/>
+                </asrn:RouteSurfaceNetworkNodeTimeSlice>
+            </asrn:timeSlice>
+        </asrn:RouteSurfaceNetworkNode>
+    </message:hasMember>
+
+</message:AIXMBasicMessage>

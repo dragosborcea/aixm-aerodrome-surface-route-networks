@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- new version datatypes -->
+<schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="D:\Work\AMDB\asrn_ext" version="5.1.1.a"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1.1"
+    xmlns:asrn="D:\Work\AMDB\asrn_ext"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="http://www.aixm.aero/schema/5.1.1/AIXM_DataTypes.xsd"/> <!-- is this correct? -->
+   
+    <simpleType name="CodeRouteSurfaceNetworkEdgeBaseType">
+        <annotation>
+            <appinfo>
+                <gml:description>Type of ASRN Edge</gml:description>
+            </appinfo>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="TAXIWAY">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="RUNWAY">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="RUNWAY_EXIT">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="PARKING">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="DEICING">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="STAND">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="APRON">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <simpleType name="CodeRouteSurfaceNetworkEdgeDerivationBaseType">
+        <annotation>
+            <appinfo>
+                <gml:description>Derivation method of ASRN Edge geometry</gml:description>
+            </appinfo>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="FULLY_ABSTRACTED">
+                        <annotation>
+                            <appinfo>
+                                <gml:description>Defined without using existing line data</gml:description>
+                            </appinfo>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="PARTIALLY_ABSTRACTED">
+                        <annotation>
+                            <appinfo>
+                                <gml:description>Partially derived from existing data and partially abstracted, for example in the cases where gaps exist</gml:description>
+                            </appinfo>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="DERIVED">
+                        <annotation>
+                            <appinfo>
+                                <gml:description>Fully derived from existing data</gml:description>
+                            </appinfo>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeRouteSurfaceNetworkEdgeDerivationType">
+        <annotation>
+            <appinfo>
+                <gml:description>A complex data type that enables the provision of a NIL reason for any attribute using this type</gml:description>
+            </appinfo>
+        </annotation>
+        <simpleContent>
+            <extension base="asrn:CodeRouteSurfaceNetworkEdgeDerivationBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <complexType name="CodeRouteSurfaceNetworkEdgeType">
+        <annotation>
+            <appinfo>
+                <gml:description>A complex data type that enables the provision of a NIL reason for any attribute using this type</gml:description>
+            </appinfo>
+        </annotation>
+        <simpleContent>
+            <extension base="asrn:CodeRouteSurfaceNetworkEdgeBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodeRouteSurfaceNetworkNodeBaseType">
+        <annotation>
+            <appinfo>
+                <gml:description>Type of ASRN Node</gml:description>
+            </appinfo>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="TAXIWAY">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="TAXIWAY_HOLDING_POSITION">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="RUNWAY_ENTRY_EXIT">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="RUNWAY_EXIT_LINE">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="RUNWAY_INTERSECTION">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="PARKING_ENTRY_EXIT">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="APRON_ENTRY_EXIT">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="TAXIWAY_LINK">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="DEICING">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="PARKING_STAND">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeRouteSurfaceNetworkNodeType">
+        <annotation>
+            <appinfo>
+                <gml:description>A complex data type that enables the provision of a NIL reason for any attribute using this type</gml:description>
+            </appinfo>
+        </annotation>
+        <simpleContent>
+            <extension base="asrn:CodeRouteSurfaceNetworkNodeBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+</schema>

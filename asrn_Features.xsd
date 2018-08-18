@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="D:\Work\AMDB\asrn_ext" version="5.1.1.a"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1.1"
+    xmlns:asrn="D:\Work\AMDB\asrn_ext"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="http://www.aixm.aero/schema/5.1.1/AIXM_Features.xsd"/> <!-- is this correct? -->
+    <include schemaLocation="D:\Work\AMDB\asrn_ext\asrn_DataTypes.xsd"/>
+   
+    <complexType name="RouteSurfaceNetworkEdgePropertyType">
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+    <element name="RouteSurfaceNetworkEdge"
+        substitutionGroup="aixm:AbstractAIXMFeature" type="asrn:RouteSurfaceNetworkEdgeType">
+        <annotation>
+            <appinfo>
+                <gml:description>Representation of the intersection of two or more aerodrome features related to taxi operations, or other special location such as holding position or entry or exit to a parking area.</gml:description>
+            </appinfo>
+        </annotation>
+    </element>
+    <complexType name="RouteSurfaceNetworkEdgeType">
+        <complexContent>
+            <extension base="aixm:AbstractAIXMFeatureType">
+                <sequence>
+                    <element maxOccurs="unbounded" name="timeSlice" type="asrn:RouteSurfaceNetworkEdgeTimeSlicePropertyType"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="RouteSurfaceNetworkEdgeTimeSlicePropertyType">
+        <sequence>
+            <element ref="asrn:RouteSurfaceNetworkEdgeTimeSlice"/>
+        </sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+    </complexType>
+    <element name="RouteSurfaceNetworkEdgeTimeSlice"
+        substitutionGroup="gml:AbstractTimeSlice" type="asrn:RouteSurfaceNetworkEdgeTimeSliceType"/>
+    <complexType name="RouteSurfaceNetworkEdgeTimeSliceType">
+        <complexContent>
+            <extension base="aixm:AbstractAIXMTimeSliceType">
+                <sequence>
+                    <group ref="asrn:RouteSurfaceNetworkEdgePropertyGroup"/>
+                    <element maxOccurs="unbounded" minOccurs="0" name="extension">
+                        <complexType>
+                            <sequence>
+                                <element ref="asrn:AbstractRouteSurfaceNetworkEdgeExtension"/>
+                            </sequence>
+                            <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RouteSurfaceNetworkEdgePropertyGroup">
+        <sequence>
+            <element minOccurs="0" name="nameInNetwork" nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Logical names from associated features</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="directionality" nillable="true" type="aixm:CodeDirectionType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Specified direction of navigation of the edge instance</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="ASRNEdgeType" nillable="true" type="asrn:CodeRouteSurfaceNetworkEdgeType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Functional type of ASRN edge</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="edgeDerivationMethod"
+                nillable="true" type="asrn:CodeRouteSurfaceNetworkEdgeDerivationType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Edge derivation method (implies suitability for display)</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="length" nillable="true" type="aixm:ValDistanceType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Distance crossed by navigating along the edge</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="curvature" nillable="true" type="aixm:ValAngleType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Total course change by navigating along the edge</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0"
+                name="correspondingSurfaceFeatureName" nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Real name of the corresponding feature instance (taxiway, runway, apron, aircraft stand)</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element maxOccurs="1" minOccurs="0"
+                name="secondConnectingNode" nillable="true" type="asrn:RouteSurfaceNetworkNodePropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="extent"
+                nillable="true" type="aixm:ElevatedCurvePropertyType"/>
+            <element maxOccurs="1" minOccurs="0"
+                name="associatedAirportHeliport" nillable="true" type="aixm:AirportHeliportPropertyType"/>
+            <element maxOccurs="1" minOccurs="0"
+                name="surfaceProperties" nillable="true" type="aixm:SurfaceCharacteristicsPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="aircraftCategory"
+                nillable="true" type="aixm:AircraftCharacteristicPropertyType"/>
+            <element maxOccurs="unbounded" minOccurs="0"
+                name="annotation" nillable="true" type="aixm:NotePropertyType"/>
+        </sequence>
+    </group>
+    <element abstract="true"
+        name="AbstractRouteSurfaceNetworkEdgeExtension"
+        substitutionGroup="aixm:AbstractExtension" type="aixm:AbstractExtensionType"/>
+    <complexType name="RouteSurfaceNetworkNodePropertyType">
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+    <element name="RouteSurfaceNetworkNode"
+        substitutionGroup="aixm:AbstractAIXMFeature" type="asrn:RouteSurfaceNetworkNodeType">
+        <!--No annotation found for this element.-->
+    </element>
+    <complexType name="RouteSurfaceNetworkNodeType">
+        <complexContent>
+            <extension base="aixm:AbstractAIXMFeatureType">
+                <sequence>
+                    <element maxOccurs="unbounded" name="timeSlice" type="asrn:RouteSurfaceNetworkNodeTimeSlicePropertyType"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="RouteSurfaceNetworkNodeTimeSlicePropertyType">
+        <sequence>
+            <element ref="asrn:RouteSurfaceNetworkNodeTimeSlice"/>
+        </sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+    </complexType>
+    <element name="RouteSurfaceNetworkNodeTimeSlice"
+        substitutionGroup="gml:AbstractTimeSlice" type="asrn:RouteSurfaceNetworkNodeTimeSliceType"/>
+    <complexType name="RouteSurfaceNetworkNodeTimeSliceType">
+        <complexContent>
+            <extension base="aixm:AbstractAIXMTimeSliceType">
+                <sequence>
+                    <group ref="asrn:RouteSurfaceNetworkNodePropertyGroup"/>
+                    <element maxOccurs="unbounded" minOccurs="0" name="extension">
+                        <complexType>
+                            <sequence>
+                                <element ref="asrn:AbstractRouteSurfaceNetworkNodeExtension"/>
+                            </sequence>
+                            <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RouteSurfaceNetworkNodePropertyGroup">
+        <sequence>
+            <element minOccurs="0" name="nameInNetwork" nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Logical names from associated features</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="terminalBuilding"
+                nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Associated terminal building</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="ASRNNodeType" nillable="true" type="asrn:CodeRouteSurfaceNetworkNodeType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Functional type of ASRN node</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="landingCategory"
+                nillable="true" type="aixm:CodeHoldingCategoryType">
+                <annotation>
+                    <appinfo>
+                        <gml:description>Low visibility operation category of holding position</gml:description>
+                    </appinfo>
+                </annotation>
+            </element>
+            <element maxOccurs="1" minOccurs="0" name="location"
+                nillable="true" type="aixm:ElevatedPointPropertyType"/>
+            <element maxOccurs="1" minOccurs="0"
+                name="associatedAirportHeliport" nillable="true" type="aixm:AirportHeliportPropertyType">
+                <!--No annotation found for this element.-->
+            </element>
+            <element maxOccurs="1" minOccurs="0" name="treshold"
+                nillable="true" type="aixm:RunwayCentrelinePointPropertyType"/>
+            <element maxOccurs="unbounded" minOccurs="0"
+                name="deicingArea" nillable="true" type="aixm:DeicingAreaPropertyType"/>
+            <element maxOccurs="1" minOccurs="0"
+                name="taxiwayHoldingPosition" nillable="true" type="aixm:TaxiHoldingPositionPropertyType"/>
+            <element maxOccurs="1" minOccurs="0"
+                name="taxiwayIntersectionMarking" nillable="true" type="aixm:TaxiwayMarkingPropertyType"/>
+            <element maxOccurs="unbounded" minOccurs="0"
+                name="annotation" nillable="true" type="aixm:NotePropertyType"/>
+        </sequence>
+    </group>
+    <element abstract="true"
+        name="AbstractRouteSurfaceNetworkNodeExtension"
+        substitutionGroup="aixm:AbstractExtension" type="aixm:AbstractExtensionType"/>
+</schema>
